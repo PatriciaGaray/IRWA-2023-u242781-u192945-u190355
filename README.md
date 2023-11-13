@@ -20,3 +20,13 @@ To execute and run the notebook with Google Colab:
 - Change the path to match the path of the files mentioned before in your directory ("Rus_Ukr_war_data.json", "Rus_Ukr_war_data_ids.csv" and “Evaluation_gt.csv”).
 - Execute each step.
   Additionally, we've included a step for installing the "demoji" package, which will be used later in the code to remove emojis from the text and might not be installed.
+
+# IRWA Project 2023 - Part 3
+In the third part of the project, the goal is to rank the tweets based on relevance using the BM25 ranking algorithm, considering the tweets' popularity (likes and retweets), and the Word2Vector model. The comparison of these rankings aims to determine which algorithm performs better.
+
+To execute and run the notebook with Google Colab:
+- Place the Python file "IRWA_2023_part_3.ipynb," the JSON file "Rus_Ukr_war_data.json", the "Rus_Ukr_war_data_ids.csv" file and the “Evaluation_gt.csv” file in the same directory.
+- After completing this setup, open the Python notebook.
+- Change the path to match the path of the files mentioned before in your directory ("Rus_Ukr_war_data.json", "Rus_Ukr_war_data_ids.csv" and “Evaluation_gt.csv”).
+- Execute each step.
+
