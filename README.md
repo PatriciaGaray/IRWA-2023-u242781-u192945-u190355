@@ -30,3 +30,18 @@ To execute and run the notebook with Google Colab:
 - Change the path to match the path of the files mentioned before in your directory ("Rus_Ukr_war_data.json", "Rus_Ukr_war_data_ids.csv" and “Evaluation_gt.csv”).
 - Execute each step.
 
+# IRWA Project 2023 - Part 4
+In the fourth and last part of the project, the primary goal of is to establish the user interface (UI) for our Search Engine. This comprehensive web application integrates all previous components, enabling users to search queries using a specified algorithm and view related tweets with detailed information. Additionally, the project introduces Statistics, Dashboard, and Sentiment tabs to analyze and track user interactions
+
+To execute and run our IU, follow these steps:
+- Place the project folder "search-engine-web-app" in your computer.
+- Then, open the project folder in Visual Studio Code or a similar platform of your choice.
+- Open the terminal in your chosen development environment.
+- Execute the following command to initiate the web application: python .\web_app.py
+
+Our application offers several features to explore:
+- Search Engine: Utilize different algorithms to query information about the Russian-Ukranian War.
+- Tweet Details: Access more detailed information about the search results.
+- Statistics Tab: Analyze statistical data for insights into the users interactions.
+- Dashboard: Track real-time data and visualize the search engine's performance.
+- Sentiment Analysis: Explore this tab to understand the emotional tone behind sentences, words and tweets.
