@@ -34,7 +34,7 @@ To execute and run the notebook with Google Colab:
 In the fourth and last part of the project, the primary goal of is to establish the user interface (UI) for our Search Engine. This comprehensive web application integrates all previous components, enabling users to search queries using a specified algorithm and view related tweets with detailed information. Additionally, the project introduces Statistics, Dashboard, and Sentiment tabs to analyze and track user interactions
 
 To execute and run our IU, follow these steps:
-- Place the project folder "search-engine-web-app" in your computer.
+- Place the project folder "search-engine-web-app-main" in your computer.
 - Then, open the project folder in Visual Studio Code or a similar platform of your choice.
 - Open the terminal in your chosen development environment.
 - Execute the following command to initiate the web application: python .\web_app.py
