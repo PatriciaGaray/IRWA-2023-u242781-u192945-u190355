@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block page_title %}Statistics {{ page_title }}{% endblock %}
+{% block header %}
+    <!-- Next tag loads Charts.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"
+            integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+{% block content %}
+    <p>Welcome to the statistics tab of our search engine! In this section, you can view the clicked tweets, the number of visits and the queries made by users.</p>
+    <h2>Quick Stats</h2>
+    <p>These are the tweets clicked by the user, with their ID, their number of visits and the complete tweet:</p>
+    <h4>Clicked tweets:</h4>
+
+    {% for doc in clicks_data %}
+        <div class="pb-3">
+            <div class="">
+                ({{ doc.counter }} visits) — <strong>Tweet ID</strong>: {{ doc.doc_id }}
+            </div>
+            <div class="visited-tweet">
+                <strong>Tweet:</strong> {{ doc.tweet}}
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <h4>Chart of Clicked Tweets</h4>
+    <p>In the following graph you can visualize the previous information in a clearer way:</p>
+    <canvas id="clickedTweetsChart" width="400" height="400"></canvas>
+
+    <script>
+        const clicksData = {{ clicks_data | tojson | safe }};
+        const tweetIDs = clicksData.map(data => data.doc_id);
+        const visitCounts = clicksData.map(data => data.counter);
+
+        const chartData = {
+            labels: tweetIDs,
+            datasets: [{
+                label: 'Number of Visits',
+                data: visitCounts,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const ctx = document.getElementById('clickedTweetsChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <h4>Chart of Query Frequency</h4>
+    <p>Finally, the following graph shows the frequency of each query made by the user:</p>
+    <canvas id="queryFrequencyChart" width="400" height="400"></canvas>
+
+    <script>
+        const queryLabels = {{ query_labels | tojson | safe }};
+        const queryData = {{ query_data | tojson | safe }};
+
+        const chartDataQuery = {
+            labels: queryLabels,
+            datasets: [{
+                label: 'Query Frequency',
+                data: queryData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const ctxQuery = document.getElementById('queryFrequencyChart').getContext('2d');
+        new Chart(ctxQuery, {
+            type: 'bar',
+            data: chartDataQuery,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

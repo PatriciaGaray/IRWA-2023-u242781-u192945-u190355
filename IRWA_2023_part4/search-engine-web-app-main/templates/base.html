@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Using Bootstrap v4.6.1 #}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/custom.css') }}">
+    <title>{% block page_title %}{% endblock %} - IRWA Search Engine</title>
+    {% block header %}{% endblock %}
+    <style>
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: bold;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .header h1 {
+            color: #C8102E;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class='header text-center mt-4'>
+        <a href="/">
+            <img src="{{ url_for('static', filename='logo.png') }}" width="100" alt="UPF logo"/>
+        </a>
+        <h1 class="h3 mt-2">IRWA Search Engine</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                    <a class="nav-link" href="/">Search</a>
+                </li>
+                <li class="nav-item {% if request.path == '/stats' %}active{% endif %}">
+                    <a class="nav-link" href="/stats">Statistics</a>
+                </li>
+                <li class="nav-item {% if request.path == '/dashboard' %}active{% endif %}">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item {% if request.path == '/sentiment' %}active{% endif %}">
+                    <a class="nav-link" href="/sentiment">Sentiment</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <hr>
+    <div class='content my-4'>
+        {% block content %}
+            base
+        {% endblock %}
+    </div>
+    <hr>
+    <div class='centered mb-4'>24952 - Information Retrieval and Web Analytics</div>
+</div>
+</body>
+</html>

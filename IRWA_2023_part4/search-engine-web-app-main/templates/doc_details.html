@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_title %}Tweet Details {{ page_title }}{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class="tweet-title">
+            <strong>Tweet Title:</strong> {{ ' '.join(tweet.tweet.split()[:3]) if tweet.tweet else 'No tweet available' }}
+        </div>            
+        <div class="tweet-summary">
+            <strong>Tweet:</strong> {{ tweet.tweet }}
+        </div>
+        <div class="tweet-date">
+            <strong>Creation Date:</strong> {{ tweet.date }}
+        </div>
+        <div class="tweet-hashtags">
+            <strong>Hashtags Used:</strong> {{ tweet.hashtags }}
+        </div>
+        <div class="tweet-likes">
+            <strong>Likes:</strong> {{ tweet.likes }}
+        </div>
+        <div class="tweet-retweets">
+            <strong>Retweets:</strong> {{ tweet.retweets }}
+        </div>
+    </div>
+{% endblock %}

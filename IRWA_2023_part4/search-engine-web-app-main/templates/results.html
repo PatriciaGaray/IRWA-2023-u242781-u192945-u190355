@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block page_title %}Search Results {{ page_title }}{% endblock %}
+{% block content %}
+    <div class="query">
+    <h4>Results for the query "<strong>{{ query_data }}</strong>"</h4>
+    </div>
+    Found <strong>{{ found_counter }}</strong> results...
+    <hr>
+    {% for item in results_list %}
+        <div class="pb-3">
+            <div class="tweet-title">
+                <strong>Tweet Title:</strong> {{ ' '.join(item.tweet.split()[:3]) if item.tweet else 'No tweet available' }}
+            </div>           
+            <div class="tweet-summary">
+                <strong>Tweet:</strong> {{ item.tweet}}
+            </div>
+            <div class="tweet-date">
+                <strong>Creation Date:</strong> {{ item.date }}
+            </div>
+            <div class="likes-retweets">
+                <strong>{{ item.likes }} likes</strong> — <strong>{{ item.retweets }} retweets</strong>
+            </div>
+            <div class="nav-link">
+                <strong>See More Details:</strong> <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">Click here</a>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

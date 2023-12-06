@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Welcome to our Search Engine!</strong></h5>
+                        <p class="card-text">
+                            Explore and discover information about the <strong>Russian-Ukrainian War</strong> using our different search options. 
+                            Choose from <strong>three</strong> different algorithms: TF-IDF, BM25, and Word2Vec to refine your search results.
+                        </p>                        
+                    </div>
+                </div>
+                <form class="d-flex" method="POST" onsubmit='return validate();' action="/search">
+                    <input class="form-control me-2" name="search-query" type="search" placeholder="Search" aria-label="Search" style="width: 100%;" autofocus>
+                    <select class="form-select" name="search-option">
+                        <option>TF-IDF</option>
+                        <option>Word2Vec</option>
+                        <option>BM25</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                    <input name="upf-irwa-hidden" type="hidden" value="123">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
